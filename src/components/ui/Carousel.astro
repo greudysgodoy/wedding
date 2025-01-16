@@ -1,0 +1,55 @@
+---
+import type { Props } from './types';
+
+const { images } = Astro.props as Props;
+---
+
+<div
+  class="relative w-full mx-auto"
+  data-images={JSON.stringify(images)}
+>
+  <div class="carousel overflow-hidden relative">
+    <div class="relative w-full h-[70vh]">
+      {images.map((image, index) => (
+        <div
+          class={`absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 ${
+            index === 0 ? 'opacity-100' : ''
+          }`}
+          style={`z-index: ${images.length - index}`}
+          data-carousel-item={index}
+        >
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <p class="text-gray-200 text-5xl text-center mx-4 uppercase font-extralight font-rosario tracking-wider">{image.caption}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const items = document.querySelectorAll('[data-carousel-item]');
+  let currentIndex = 0;
+
+  if (items.length > 1) {
+    setInterval(() => {
+      // Oculta la imagen actual
+      items[currentIndex].classList.remove('opacity-100');
+      items[currentIndex].classList.add('opacity-0');
+
+      // Avanza al siguiente índice
+      currentIndex = (currentIndex + 1) % items.length;
+
+      // Muestra la nueva imagen
+      items[currentIndex].classList.remove('opacity-0');
+      items[currentIndex].classList.add('opacity-100');
+    }, 5000);
+  }
+</script>
