@@ -1,7 +1,13 @@
 ---
-import type { Props } from './types';
+import { Image } from 'astro:assets';
+import type { ImageProps } from './types';
 
-const { images } = Astro.props as Props;
+interface Props {
+  images: ImageProps[];
+}
+
+// Recibir las props desde Astro
+const { images } = Astro.props;
 ---
 
 <div
@@ -10,23 +16,35 @@ const { images } = Astro.props as Props;
 >
   <div class="carousel overflow-hidden relative">
     <div class="relative w-full h-[70vh]">
-      {images.map((image, index) => (
+      {images.map(({ src, alt, caption, width, height }, index) => (
         <div
-          class={`absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 ${
-            index === 0 ? 'opacity-100' : ''
+          class={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === 0 ? 'opacity-100' : 'opacity-0'
           }`}
           style={`z-index: ${images.length - index}`}
           data-carousel-item={index}
         >
-          <img
-            src={image.src}
-            alt={image.alt}
-            class="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
+          {typeof src === 'string' ? (
+            <Image
+              src={src}
+              alt={alt || ''}
+              width={width || 1920}
+              height={height || 1080}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          ) : (
+            <Image
+              src={src}
+              alt={alt || ''}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          )}
           <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-            <p class="text-gray-200 text-5xl text-center mx-4 uppercase font-extralight font-rosario tracking-wider">{image.caption}</p>
+            <p class="text-gray-200 text-5xl text-center mx-4 uppercase font-extralight font-rosario tracking-wider">
+              {caption || ''}
+            </p>
           </div>
         </div>
       ))}
@@ -34,7 +52,7 @@ const { images } = Astro.props as Props;
   </div>
 </div>
 
-<script type="module">
+<script>
   const items = document.querySelectorAll('[data-carousel-item]');
   let currentIndex = 0;
 
