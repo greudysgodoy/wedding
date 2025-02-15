@@ -1,0 +1,92 @@
+---
+// Recibimos la fecha objetivo como prop
+const { targetDate } = Astro.props;
+---
+
+<astro-countdown data-target-date={targetDate.toISOString()}>
+  <div id="countdown" class="flex justify-center space-x-4">
+    <div class="flex flex-col items-center">
+      <span id="countdown-days" class="text-4xl font-bold text-lila">0</span>
+      <span class="text-sm uppercase">Días</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="countdown-hours" class="text-4xl font-bold text-lila">0</span>
+      <span class="text-sm uppercase">Horas</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="countdown-minutes" class="text-4xl font-bold text-lila">0</span>
+      <span class="text-sm uppercase">Minutos</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="countdown-seconds" class="text-4xl font-bold text-lila">0</span>
+      <span class="text-sm uppercase">Segundos</span>
+    </div>
+  </div>
+</astro-countdown>
+
+<script>
+  class AstroCountdown extends HTMLElement {
+    intervalId :number | null = null;
+
+    connectedCallback() {
+      // Obtenemos la fecha objetivo desde el atributo data
+      const targetDate = new Date(Date.parse(this.dataset.targetDate || ""));
+
+      // Validamos que la fecha sea válida
+      if (isNaN(targetDate.getTime())) {
+        console.error("Fecha objetivo inválida");
+        return;
+      }
+
+      // Buscamos los elementos dentro del componente para evitar conflictos con otros en la página
+      const daysEl = this.querySelector("#countdown-days");
+      const hoursEl = this.querySelector("#countdown-hours");
+      const minutesEl = this.querySelector("#countdown-minutes");
+      const secondsEl = this.querySelector("#countdown-seconds");
+
+      const updateCountdown = () => {
+        const now = new Date();
+        const distance = targetDate.getTime() - now.getTime();
+
+        // Si ya alcanzamos o superamos la fecha, establecemos todo en cero y detenemos el intervalo
+        if (distance <= 0) {
+          if (daysEl) daysEl.textContent = "0";
+          if (hoursEl) hoursEl.textContent = "0";
+          if (minutesEl) minutesEl.textContent = "0";
+          if (secondsEl) secondsEl.textContent = "0";
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+          }
+          return;
+        }
+
+        // Calculamos los valores restantes
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (daysEl) daysEl.textContent = days.toString();
+        if (hoursEl) hoursEl.textContent = hours.toString();
+        if (minutesEl) minutesEl.textContent = minutes.toString();
+        if (secondsEl) secondsEl.textContent = seconds.toString();
+      };
+
+      // Actualizamos inmediatamente la cuenta
+      updateCountdown();
+
+      // Si la fecha aún no se ha alcanzado, iniciamos el intervalo
+      if (targetDate.getTime() - new Date().getTime() > 0) {
+        this.intervalId = setInterval(updateCountdown, 1000);
+      }
+    }
+
+    disconnectedCallback() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
+    }
+  }
+
+  customElements.define('astro-countdown', AstroCountdown);
+</script>

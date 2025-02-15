@@ -1,0 +1,36 @@
+---
+// Recibimos la fecha objetivo como prop
+const { targetDate } = Astro.props;
+---
+
+<astro-day data-target-date={targetDate.toISOString()}>
+  <span id="day-text"></span>
+</astro-day>
+
+<script>
+  class AstroDay extends HTMLElement {
+    constructor() {
+      super();
+      // Obtenemos la fecha objetivo desde el atributo data
+      const targetDate = new Date(Date.parse(this.dataset.targetDate || ""));
+  
+      // Validamos que la fecha sea válida
+      if (isNaN(targetDate.getTime())) {
+        console.error("Fecha objetivo inválida");
+        return;
+      }
+  
+      // Buscamos los elementos dentro del componente para evitar conflictos con otros en la página
+      const dateEl = this.querySelector("#day-text");
+      // Define arrays for Spanish weekdays and months
+      const weekdays = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"];
+
+      const formattedDate = `${weekdays[targetDate.getDay()]}`;
+      if (dateEl) {
+        dateEl.textContent = formattedDate;
+      }
+    }
+  }
+
+  customElements.define('astro-day', AstroDay);
+</script>
