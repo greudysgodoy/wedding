@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import ImageCarousel from "../components/ui/Carousel.astro";
 import AstroCountdown from "../components/Countdown.astro";
 import giftImage from "../images/regalo.jpg";
@@ -10,10 +10,11 @@ import park from "../images/park.webp";
 import weddingPlace from "../images/agua-santa.webp";
 import dressMan from "../images/dress-man.webp";
 import dressWoman from "../images/dress-woman.webp";
-import Countdown from '../components/Countdown.astro';
-import DateText from './ui/DateText.astro';
-import DayText from './ui/DayText.astro';
-import HourText from './ui/HourText.astro';
+import Countdown from "../components/Countdown.astro";
+import DateText from "./ui/DateText.astro";
+import DayText from "./ui/DayText.astro";
+import HourText from "./ui/HourText.astro";
+import { Icon } from "astro-icon/components";
 
 const images = [
   {
@@ -39,6 +40,24 @@ const confirmationLink = {
   url: "https://forms.gle/e1UCTdMFkSbYAZde7",
   text: "Confirmar aquí",
 };
+
+const giftOptions = [
+  {
+    name: "Binance",
+    details: "greudysgodoy@gmail.com",
+    icon: "binance",
+  },
+  {
+    name: "Pago Móvil",
+    details: "04120734022, 26831421 Mercantil",
+    icon: "mobile",
+  },
+  {
+    name: "Efectivo",
+    details: "Puedes entregarlo en persona el día del evento",
+    icon: "dollar",
+  },
+];
 const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
 ---
 
@@ -105,17 +124,19 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Texto introductorio -->
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12">
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
       Es por eso que te invitamos
     </p>
-  
+
     <!-- Línea decorativa inferior -->
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Imagen y texto debajo -->
     <div class="flex flex-col items-center">
       <div class="flex justify-center items-center">
@@ -127,39 +148,34 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
           />
         </div>
       </div>
-      <p class="font-parisienne text-5xl mt-4 text-center">
-        A nuestra Boda
-      </p>
+      <p class="font-parisienne text-5xl mt-4 text-center">A nuestra Boda</p>
     </div>
   </section>
   <section class="bg-gray-light py-4 pt-5">
-
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mb-4">
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mb-4"
+    >
       Reserva la fecha...
     </p>
     <div class="flex flex-col items-center">
       <div class="relative">
         {/* Imagen */}
-        <Image
-          src={park}
-          alt="cascada"
-          class="w-full h-full object-cover"
-        />
+        <Image src={park} alt="cascada" class="w-full h-full object-cover" />
         {/* Capa oscura */}
         <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
         {/* Texto */}
         <div class="absolute bottom-0">
-            <p class="mb-4 font-rosario text-md px-5 text-white uppercase opacity-75">
-              <DayText targetDate={weddingDate} />
-            </p>
-          <p class="mb-4 text-5xl px-5 text-white uppercase">
+          <p
+            class="mb-4 font-rosario text-xl px-5 text-white uppercase opacity-75"
+          >
+            <DayText targetDate={weddingDate} />
+          </p>
+          <p class="mb-4 text-4xl px-5 text-white uppercase">
             <DateText targetDate={weddingDate} />
           </p>
         </div>
       </div>
     </div>
-    
-    
   </section>
 
   <section class="bg-gray-light py-8">
@@ -175,17 +191,19 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Texto introductorio -->
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12">
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
       Ceremonia y recepción
     </p>
-  
+
     <!-- Línea decorativa inferior -->
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Imagen y texto debajo -->
     <div class="flex flex-col items-center">
       <div class="flex justify-center items-center">
@@ -232,31 +250,33 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
         />
       </div>
     </div>
-    
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12">
+
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
       Código de vestimenta
     </p>
     <p class="text-center font-rosario text-4xl">Semi formal</p>
     <p class="text-center">Nota: El blanco está reservado para la novia</p>
-    
-  
   </section>
   <section class="bg-gray-light py-4">
     <!-- Líneas decorativas -->
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Texto introductorio -->
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12">
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
       Itinerario
     </p>
-  
+
     <!-- Línea decorativa inferior -->
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Imagen y texto debajo -->
     <div class="bg-lila-light text-lila-dark text-center p-4 mx-5 rounded-lg">
       <div class="grid grid-cols-2 gap-4">
@@ -271,7 +291,6 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
         <div class="row-span-1">Despedida</div>
         <div class="row-span-1">10:00 pm</div>
       </div>
-      
     </div>
   </section>
   <section class="bg-gray-light py-4">
@@ -279,25 +298,73 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <!-- Texto introductorio -->
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12">
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
       Confirmación de asistencia
     </p>
-  
+
     <!-- Línea decorativa inferior -->
     <div class="flex justify-center">
       <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
-  
+
     <div class="flex flex-col items-center">
-      
       <p class="font-rosario text-lg my-2 text-center mx-12">
         Por favor confirma tu asistencia 15 días antes del evento
       </p>
-      <a class="bg-lila-light border border-lila text-lila-dark rounded-full px-3 py-2" href={confirmationLink.url} target="_blank">{confirmationLink.text}</a>
+      <a
+        class="bg-lila-light border border-lila text-lila-dark rounded-full px-3 py-2"
+        href={confirmationLink.url}
+        target="_blank">{confirmationLink.text}</a
+      >
+    </div>
+  </section>
+  <section class="bg-lila-light py-4 px-3">
+    <div class="flex justify-center">
+      <Icon name="gift" size={100} class="text-center text-lila-dark" />
+    </div>
+    <h2
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
+      Regalos
+    </h2>
+    <div class="flex justify-center">
+      <hr class="my-4 border-lila border-t-2 w-12" />
+    </div>
+    <p class="font-rosario text-center mb-2">
+      Nuestro mayor regalo es tu presencia, pero si deseas obsequiarnos algo,
+      puedes hacerlo a través de las siguientes opciones:
+    </p>
+    <div class="bg-white p-4 rounded-lg mx-3">
+      {giftOptions.map((option) => (
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 mr-4">
+            <Icon name={option.icon} size={40} class="text-lila-dark" />
+          </div>
+          <div>
+            <h3 class="text-lila-dark text-lg font-rosario">{option.name}</h3>
+            <p class="text-gray-700">{option.details}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <section class="bg-gray-light py-4">
+    <div class="flex justify-center">
+      <hr class="my-4 border-lila border-t-2 w-12" />
+    </div>
+
+    <p
+      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+    >
+      ¡Nos vemos pronto!
+    </p>
+
+    <div class="flex justify-center">
+      <hr class="my-4 border-lila border-t-2 w-12" />
     </div>
   </section>
 </div>
-
-<script></script>
