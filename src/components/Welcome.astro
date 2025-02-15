@@ -15,6 +15,7 @@ import DateText from "./ui/DateText.astro";
 import DayText from "./ui/DayText.astro";
 import HourText from "./ui/HourText.astro";
 import { Icon } from "astro-icon/components";
+import SectionTitle from "./SectionTitle.astro";
 
 const images = [
   {
@@ -120,22 +121,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
   </section>
 
   <section class="bg-gray-light py-4">
-    <!-- Líneas decorativas -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
-
-    <!-- Texto introductorio -->
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      Es por eso que te invitamos
-    </p>
-
-    <!-- Línea decorativa inferior -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+    <SectionTitle title="Es por eso que te invitamos" />
 
     <!-- Imagen y texto debajo -->
     <div class="flex flex-col items-center">
@@ -187,22 +173,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     </div>
   </section>
   <section class="bg-gray-light py-4">
-    <!-- Líneas decorativas -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
-
-    <!-- Texto introductorio -->
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      Ceremonia y recepción
-    </p>
-
-    <!-- Línea decorativa inferior -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+    <SectionTitle title="Ceremonia y recepción" />
 
     <!-- Imagen y texto debajo -->
     <div class="flex flex-col items-center">
@@ -260,22 +231,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <p class="text-center">Nota: El blanco está reservado para la novia</p>
   </section>
   <section class="bg-gray-light py-4">
-    <!-- Líneas decorativas -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
-
-    <!-- Texto introductorio -->
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      Itinerario
-    </p>
-
-    <!-- Línea decorativa inferior -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+    <SectionTitle title="Itinerario" />
 
     <!-- Imagen y texto debajo -->
     <div class="bg-lila-light text-lila-dark text-center p-4 mx-5 rounded-lg">
@@ -294,22 +250,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     </div>
   </section>
   <section class="bg-gray-light py-4">
-    <!-- Líneas decorativas -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
-
-    <!-- Texto introductorio -->
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      Confirmación de asistencia
-    </p>
-
-    <!-- Línea decorativa inferior -->
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+    <SectionTitle title="Confirmación de asistencia" />
 
     <div class="flex flex-col items-center">
       <p class="font-rosario text-lg my-2 text-center mx-12">
@@ -323,17 +264,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     </div>
   </section>
   <section class="bg-lila-light py-4 px-3">
-    <div class="flex justify-center">
-      <Icon name="gift" size={100} class="text-center text-lila-dark" />
-    </div>
-    <h2
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      Regalos
-    </h2>
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+    <SectionTitle title="Regalos" />
     <p class="font-rosario text-center mb-2">
       Nuestro mayor regalo es tu presencia, pero si deseas obsequiarnos algo,
       puedes hacerlo a través de las siguientes opciones:

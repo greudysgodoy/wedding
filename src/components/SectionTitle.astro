@@ -1,0 +1,19 @@
+---
+import Divider from "./ui/Divider.astro";
+
+const { title } = Astro.props;
+---
+
+<div>
+  <div class="flex justify-center">
+    <Divider />
+  </div>
+  <h2
+    class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
+  >
+    {title}
+  </h2>
+  <div class="flex justify-center">
+    <Divider />
+  </div>
+</div>
