@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import ImageCarousel from "../components/ui/Carousel.astro";
-import AstroCountdown from "../components/Countdown.astro";
 import giftImage from "../images/regalo.jpg";
 import cascadeImage from "../images/cascada.jpg";
 import wedding1 from "../images/wedding1.webp";
@@ -32,7 +31,7 @@ const images = [
 
 const place = {
   name: "Agua Santa",
-  address: "Agua Viva, Las Cuibas",
+  address: "Agua Viva, Las Cuibas, Cabudare",
   image: weddingPlace,
   googleMapsLink: "https://maps.app.goo.gl/JyYVbNDrPAdVMYHG7",
 };
@@ -67,7 +66,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
   <section class="bg-gray-light py-4">
     <div class="flex justify-center">
       <h1 class="text-2xl tracking-wider mb-0 text-gray-700">
-        Boda Greudys y Heizel
+        Boda Heizel y Greudys
       </h1>
     </div>
   </section>
@@ -126,11 +125,11 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <!-- Imagen y texto debajo -->
     <div class="flex flex-col items-center">
       <div class="flex justify-center items-center">
-        <div class="relative w-1/2 aspect-square">
+        <div class="relative mx-8 rounded-xl">
           <Image
             src={cascadeImage}
             alt="cascada"
-            class="w-full h-full object-cover rounded-full"
+            class="w-full h-full object-cover rounded-xl"
           />
         </div>
       </div>
@@ -175,22 +174,23 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
   <section class="bg-gray-light py-4">
     <SectionTitle title="Ceremonia y recepción" />
 
-    <!-- Imagen y texto debajo -->
-    <div class="flex flex-col items-center">
+    <div
+      class="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm mx-3"
+    >
       <div class="flex justify-center items-center">
-        <div class="relative w-1/2 aspect-square">
+        <div class="relative w-full">
           <Image
             src={place.image}
             alt="cristal"
-            class="w-full h-full object-cover rounded-full"
+            class="w-full object-cover rounded-lg mx-auto"
           />
         </div>
       </div>
-      <p class="bg-lila text-white text-xl px-3 py-1 rounded-lg mt-4">
-        <HourText targetDate={weddingDate} />
-      </p>
-      <p class="font-rosario text-2xl my-2 text-center">
+      <p class="font-rosario text-2xl text-center">
         {place.name}
+      </p>
+      <p class="text-2xl text-center">
+        <HourText targetDate={weddingDate} />
       </p>
       <p class="font-rosario text-xl mt-0 mb-2 text-center">
         {place.address}
@@ -270,17 +270,19 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
       puedes hacerlo a través de las siguientes opciones:
     </p>
     <div class="bg-white p-4 rounded-lg mx-3">
-      {giftOptions.map((option) => (
-        <div class="flex items-center mb-4">
-          <div class="w-8 h-8 mr-4">
-            <Icon name={option.icon} size={40} class="text-lila-dark" />
+      {
+        giftOptions.map((option) => (
+          <div class="flex items-center mb-4">
+            <div class="w-8 h-8 mr-4">
+              <Icon name={option.icon} size={40} class="text-lila-dark" />
+            </div>
+            <div>
+              <h3 class="text-lila-dark text-lg font-rosario">{option.name}</h3>
+              <p class="text-gray-700">{option.details}</p>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lila-dark text-lg font-rosario">{option.name}</h3>
-            <p class="text-gray-700">{option.details}</p>
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
   <section class="bg-gray-light py-4">
