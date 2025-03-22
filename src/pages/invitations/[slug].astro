@@ -1,9 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import Envelope from "../../components/Envelope.astro";
 import invitations from "../../data/invitations.json";
-import { Icon } from "astro-icon/components";
-import logo from "../../images/hg-logo.png";
+import invitationPic from "../../images/invitation-pic.jpg";
+import closedLetter from "../../images/closed-letter.jpg";
+import arrow from "../../images/arrow.png";
+import letterRectangle from "../../images/letter-rectangle.png";
+import whiteSeal from "../../images/white-seal.png";
 
 export async function getStaticPaths() {
   return invitations.map((guest) => ({
@@ -13,6 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { guest } = Astro.props;
+const totalCircles = 5;
 ---
 
 <html lang="es">
@@ -34,39 +37,91 @@ const { guest } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Italianno&family=Asul:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body {
-        font-family: "Cormorant Infant", serif;
-      }
-    </style>
   </head>
   <body>
-    <div class="flex items-center justify-center min-h-screen">
-      <div class="max-w-2xl mx-auto p-8">
-        <h1 class="text-4xl font-bold text-center">Nuestra Boda</h1>
-        <div class="flex justify-center">
-          <Image
-            src={logo}
-            alt="cristal"
-            class="w-3/4 h-full object-cover rounded-full"
-          />
-        </div>
-        <p class="text-lg text-center">
-          Hemos reservado un lugar en su honor
-        </p>
-        <div class="flex items-center justify-center my-2">
-          <div class="flex-grow border-t border-gray-300"></div>
-          <Icon name="heart" size={20} class="text-lila-dark" />
-          <div class="flex-grow border-t border-gray-300"></div>
-        </div>
-        <h2 class="text-2xl my-2 text-center">{guest.name}</h2>
-        <div class="flex justify-center items-center mx-10">
-          <Envelope name="Toca para abrir" href="/" />
-        </div>
+    <div>
+      <div class="relative">
+        <Image
+          src={invitationPic}
+          alt="invitation-pic"
+          class="h-full object-cover w-full"
+        />
+        <h1
+          class="absolute bottom-[-25px] text-5xl font-italianno text-center w-full bg-opacity-70 bg-white text-emerald-900"
+        >
+          Nuestra Boda
+        </h1>
       </div>
+      <h2 class="mt-5 font-asul text-3xl text-center text-emerald-900">
+        GREUDYS & HEIZEL
+      </h2>
+      <h3 class="mt-4 text-center font-asul text-xl text-emerald-900">
+        26-ABRIL-2025
+      </h3>
+      <a href="/">
+        <div class="relative mx-12 mb-28">
+          <Image
+            src={closedLetter}
+            alt="closed-letter"
+            class="h-full object-cover w-full drop-shadow-md shadow-md rounded-lg"
+          />
+          <div
+            class="absolute top-[40%] left-1/2 transform -translate-x-1/2 w-1/4 z-10"
+          >
+            <Image src={whiteSeal} alt="white-seal" class="w-100" />
+          </div>
+          <div class="absolute top-[45%] left-[50%] w-1/2">
+            <div class="relative">
+              <Image src={letterRectangle} alt="rectangle" class="w-full" />
+              <div
+                class="absolute flex items-center font-asul text-lg text-emerald-900 text-center top-[5%] right-0 pr-2 h-12 w-24"
+              >
+                <p class="font-asul text-lg/5 text-emerald-900 text-center line-">
+                  {guest.name}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute top-[60%] left-[25%] justify-center">
+            <Image src={arrow} alt="arrow" class="w-1/2" />
+          </div>
+          <div
+            class="absolute bottom-[-6rem] left-1/2 transform -translate-x-1/2 text-center w-3/4"
+          >
+            <p class="font-asul text-lg uppercase text-emerald-900">
+              Toca para abrir invitación
+            </p>
+          </div>
+        </div>
+      </a>
+      <p
+        class="my-4 font-asul text-emerald-900 text-2xl text-center font-bold uppercase"
+      >
+        Hemos reservado
+      </p>
+
+      <div class="flex justify-center space-x-4 my-2">
+        {
+          Array.from({ length: totalCircles }).map((_, index) => (
+            <div
+              class={`w-8 h-8 rounded-full border-2 border-gray-300 ${
+                index < guest.tickets ? "bg-gray-300" : ""
+              }`}
+            />
+          ))
+        }
+      </div>
+      <div class="font-asul text-center text-emerald-900 text-lg">
+        {guest.tickets} PASES
+      </div>
+      <p
+        class="my-4 font-asul text-emerald-900 text-2xl text-center font-bold uppercase"
+      >
+        En su honor
+      </p>
     </div>
   </body>
 </html>

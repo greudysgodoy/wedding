@@ -19,6 +19,8 @@ module.exports = {
       fontFamily: {
         parisienne: ['Parisienne', 'serif'],
         rosario: ['Rosario', 'serif'],
+        italianno: ['Italianno', 'cursive'],
+        asul: ['Asul', 'serif'],
       },
     },
   },

@@ -1,6 +1,12 @@
 [
   {
     "name": "Jose y Yuri",
-    "slug": "jose-yuri"
+    "slug": "jose-yuri",
+    "tickets": 2
+  },
+  {
+    "name": "Wilmer y Yeraldine",
+    "slug": "wilmer-yeraldine",
+    "tickets": 2
   }
 ]
