@@ -1,20 +1,24 @@
 ---
 import { Image } from "astro:assets";
 import ImageCarousel from "../components/ui/Carousel.astro";
-import giftImage from "../images/regalo.jpg";
-import cascadeImage from "../images/cascada.jpg";
-import wedding1 from "../images/wedding1.webp";
-import wedding2 from "../images/wedding2.webp";
-import park from "../images/park.webp";
+import shareMoments from "../images/share-moments.jpg";
+import wedding1 from "../images/wedding1.jpg";
+import wedding2 from "../images/wedding2.jpg";
+import wedding3 from "../images/wedding3.jpg";
+import wedding4 from "../images/wedding4.jpg";
+import wedding5 from "../images/wedding5.jpg";
+import wedding6 from "../images/wedding6.jpg";
+import wedding7 from "../images/wedding7.jpg";
+import wedding8 from "../images/wedding8.jpg";
+import confirm from "../images/confirm.png";
 import weddingPlace from "../images/agua-santa.webp";
 import dressMan from "../images/dress-man.webp";
 import dressWoman from "../images/dress-woman.webp";
+import logo from "../images/hg-logo.png";
 import Countdown from "../components/Countdown.astro";
-import DateText from "./ui/DateText.astro";
-import DayText from "./ui/DayText.astro";
-import HourText from "./ui/HourText.astro";
 import { Icon } from "astro-icon/components";
 import SectionTitle from "./SectionTitle.astro";
+import PlayButton from "./ui/PlayButton.astro";
 
 const images = [
   {
@@ -26,6 +30,29 @@ const images = [
     src: wedding2,
     alt: "Imagen 2",
     caption: "Para toda la vida",
+  },
+];
+
+const imagesFooter = [
+  {
+    src: wedding5,
+    alt: "Imagen 5",
+    caption: "Te esperamos",
+  },
+  {
+    src: wedding6,
+    alt: "Imagen 6",
+    caption: "Te esperamos",
+  },
+  {
+    src: wedding7,
+    alt: "Imagen 7",
+    caption: "Te esperamos",
+  },
+  {
+    src: wedding8,
+    alt: "Imagen 8",
+    caption: "Te esperamos",
   },
 ];
 
@@ -59,50 +86,79 @@ const giftOptions = [
   },
 ];
 const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
+
+const activities = [
+  {
+    time: "4:30 PM",
+    activity: "Ceremonia",
+    icon: "bible",
+  },
+  {
+    time: "6:00 PM",
+    activity: "Recepción",
+    icon: "cheers",
+  },
+  {
+    time: "7:00 PM",
+    activity: "Cena",
+    icon: "dinner",
+  },
+  {
+    time: "8:00 PM",
+    activity: "Primer baile",
+    icon: "dancing",
+  },
+  {
+    time: "9:00 PM",
+    activity: "Fiesta",
+    icon: "disco",
+  },
+  {
+    time: "10:00 PM",
+    activity: "Despedida",
+    icon: "clock",
+  },
+];
 ---
 
 <div id="welcome">
-  <!-- Sección principal -->
-  <section class="bg-gray-light py-4">
-    <div class="flex justify-center">
-      <h1 class="text-2xl tracking-wider mb-0 text-gray-700">
-        Boda Heizel y Greudys
-      </h1>
-    </div>
+  <div class="w-1/2 mx-auto">
+    <Image
+      src={logo}
+      alt={"logo"}
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+  </div>
+  <section class="py-1">
+    <h1 class="text-2xl tracking-wider mb-0 text-zinc-700 text-center">
+      Nuestra Boda
+    </h1>
   </section>
 
   <section>
     <ImageCarousel images={images} />
   </section>
 
-  <section class="bg-gray-light py-4">
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12 text-center" />
-    </div>
-
-    <p class="text-xl tracking-wider text-center font-rosario uppercase px-4">
-      Hay momentos en la vida que son especiales...
-    </p>
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12 text-center" />
-    </div>
+  <section class="py-4">
+    <SectionTitle title="Hay momentos en la vida que son especiales..." />
   </section>
 
   <section>
-    <div class="relative w-full h-[70vh]">
+    <div class="relative w-full h-[60vh]">
       <!-- Imagen -->
       <div
-        class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+        class="absolute inset-0 transition-opacity duration-1000 ease-in-out mx-8"
       >
         <Image
-          src={giftImage}
-          alt={"regalo"}
-          class="w-full h-full object-cover"
+          src={shareMoments}
+          alt={"share-moments"}
+          class="w-full h-full object-cover rounded-lg"
           loading="eager"
         />
         <!-- Contenedor de texto -->
         <div
-          class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end items-center pb-12"
+          class="absolute inset-0 rounded-lg bg-black bg-opacity-30 flex flex-col justify-end items-center pb-12"
         >
           <p
             class="text-gray-200 text-lg text-center m-5 uppercase font-extralight font-rosario tracking-widest"
@@ -110,7 +166,7 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
             Compartirlos con las personas que quieres
           </p>
           <p
-            class="text-gray-200 text-5xl text-center mx-4 uppercase font-extralight font-rosario tracking-wider"
+            class="text-gray-200 text-3xl text-center mx-4 uppercase font-extralight font-rosario tracking-wider"
           >
             Los convierte inolvidables
           </p>
@@ -119,82 +175,87 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     </div>
   </section>
 
-  <section class="bg-gray-light py-4">
+  <section>
     <SectionTitle title="Es por eso que te invitamos" />
 
     <!-- Imagen y texto debajo -->
-    <div class="flex flex-col items-center">
-      <div class="flex justify-center items-center">
-        <div class="relative mx-8 rounded-xl">
-          <Image
-            src={cascadeImage}
-            alt="cascada"
-            class="w-full h-full object-cover rounded-xl"
-          />
+    <div class="relative w-full h-[60vh]">
+      <div
+        class="absolute inset-0 transition-opacity duration-1000 ease-in-out mx-8"
+      >
+        <Image
+          src={wedding3}
+          alt="cascada"
+          class="w-full h-full object-cover rounded-lg"
+        />
+        <div
+          class="absolute inset-0 rounded-lg bg-black bg-opacity-30 flex flex-col justify-end items-center pb-0"
+        >
+          <p
+            class="text-gray-200 text-5xl text-center my-5 font-extralight font-italianno tracking-wider"
+          >
+            A nuestra Boda
+          </p>
         </div>
       </div>
-      <p class="font-parisienne text-5xl mt-4 text-center">A nuestra Boda</p>
     </div>
   </section>
-  <section class="bg-gray-light py-4 pt-5">
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mb-4"
-    >
-      Reserva la fecha...
-    </p>
-    <div class="flex flex-col items-center">
-      <div class="relative">
-        {/* Imagen */}
-        <Image src={park} alt="cascada" class="w-full h-full object-cover" />
-        {/* Capa oscura */}
-        <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-        {/* Texto */}
-        <div class="absolute bottom-0">
-          <p
-            class="mb-4 font-rosario text-xl px-5 text-white uppercase opacity-75"
+  <section class="py-5">
+    <div class="w-3/4 mx-auto">
+      <div>
+        <div class="text-center text-lila text-lg">ABRIL</div>
+        <div class="grid grid-cols-3 text-center">
+          <div
+            class="flex flex-col justify-center border-t border-b border-lila"
           >
-            <DayText targetDate={weddingDate} />
-          </p>
-          <p class="mb-4 text-4xl px-5 text-white uppercase">
-            <DateText targetDate={weddingDate} />
-          </p>
+            <p class="text-xl text-lila">SÁBADO</p>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="text-4xl font-bold text-lila">26</p>
+          </div>
+          <div
+            class="flex flex-col justify-center border-t border-b border-lila"
+          >
+            <p class="text-xl text-lila">4:30 PM</p>
+          </div>
         </div>
+        <div class="text-center text-lila text-lg">2025</div>
       </div>
     </div>
   </section>
 
-  <section class="bg-gray-light py-8">
-    <div class="text-center">
-      <p class="text-3xl font-parisienne text-gray-700 mb-6">
-        Faltan para el gran día:
-      </p>
-      <Countdown targetDate={weddingDate} />
+  <section>
+    <div class="relative w-full h-[52vh]">
+      <Image src={wedding4} alt="cascada" class="w-full h-full object-cover" />
+      <div
+        class="absolute inset-0 flex flex-col justify-start items-center bg-black bg-opacity-5 mb-5"
+      >
+        <p class="text-4xl font-italianno text-white mt-16">
+          Faltan para el gran día:
+        </p>
+      </div>
+      <div
+        class="absolute inset-0 flex flex-col justify-end items-center bg-black bg-opacity-5 mb-8"
+      >
+        <Countdown targetDate={weddingDate} />
+      </div>
     </div>
   </section>
-  <section class="bg-gray-light py-4">
+  <section class="py-4 mx-8">
     <SectionTitle title="Ceremonia y recepción" />
 
-    <div
-      class="flex flex-col items-center bg-white p-4 rounded-lg shadow-sm mx-3"
-    >
-      <div class="flex justify-center items-center">
-        <div class="relative w-full">
-          <Image
-            src={place.image}
-            alt="cristal"
-            class="w-full object-cover rounded-lg mx-auto"
-          />
-        </div>
-      </div>
-      <p class="font-rosario text-2xl text-center">
-        {place.name}
-      </p>
-      <p class="text-2xl text-center">
-        <HourText targetDate={weddingDate} />
-      </p>
-      <p class="font-rosario text-xl mt-0 mb-2 text-center">
-        {place.address}
-      </p>
+    <Image
+      src={place.image}
+      alt="cristal"
+      class="w-full object-cover rounded-lg mx-auto"
+    />
+    <p class="font-rosario text-xl text-center">
+      {place.name}
+    </p>
+    <p class="font-rosario text-md mt-0 mb-2 text-center">
+      {place.address}
+    </p>
+    <div class="flex justify-center">
       <a
         class="bg-lila-light border border-lila text-lila-dark rounded-full px-3 py-2"
         href={place.googleMapsLink}
@@ -230,42 +291,61 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
     <p class="text-center font-rosario text-4xl">Semi formal</p>
     <p class="text-center">Nota: El blanco está reservado para la novia</p>
   </section>
-  <section class="bg-gray-light py-4">
+  <section>
     <SectionTitle title="Itinerario" />
 
     <!-- Imagen y texto debajo -->
     <div class="bg-lila-light text-lila-dark text-center p-4 mx-5 rounded-lg">
       <div class="grid grid-cols-2 gap-4">
-        <div class="row-span-1">Ceremonia</div>
-        <div class="row-span-1">5:00 pm</div>
-        <div class="row-span-1">Recepción</div>
-        <div class="row-span-1">6:00 pm</div>
-        <div class="row-span-1">Cena</div>
-        <div class="row-span-1">7:00 pm</div>
-        <div class="row-span-1">Baile</div>
-        <div class="row-span-1">8:00 pm</div>
-        <div class="row-span-1">Despedida</div>
-        <div class="row-span-1">10:00 pm</div>
+        {
+          activities.map((activity) => (
+            <>
+              <div class="row-span-1 flex items-center justify-center">
+                <Icon name={activity.icon} size={32} class="text-lila-dark" />
+              </div>
+              <div class="row-span-1">
+                <div class="font-asul">{activity.activity}</div>
+                <div>{activity.time}</div>
+              </div>
+            </>
+          ))
+        }
       </div>
     </div>
   </section>
-  <section class="bg-gray-light py-4">
+  <section class="py-4">
     <SectionTitle title="Confirmación de asistencia" />
 
-    <div class="flex flex-col items-center">
-      <p class="font-rosario text-lg my-2 text-center mx-12">
-        Por favor confirma tu asistencia 15 días antes del evento
-      </p>
-      <a
-        class="bg-lila-light border border-lila text-lila-dark rounded-full px-3 py-2"
-        href={confirmationLink.url}
-        target="_blank">{confirmationLink.text}</a
-      >
+    <div class="grid grid-cols-5 gap-0 items-center">
+      <div class="col-span-1 flex justify-center">
+        <Image
+          src={confirm}
+          alt="cristal"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+      <div class="col-span-3 flex flex-col items-center">
+        <p class="font-asul text-base my-2 text-center">
+          Por favor confirma tu asistencia 15 días antes del evento
+        </p>
+        <a
+          class="bg-lila-light border border-lila text-lila-dark rounded-full px-2 py-2 text-center"
+          href={confirmationLink.url}
+          target="_blank">{confirmationLink.text}</a
+        >
+      </div>
+      <div class="col-span-1 flex justify-center">
+        <Image
+          src={confirm}
+          alt="cristal"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
     </div>
   </section>
   <section class="bg-lila-light py-4 px-3">
     <SectionTitle title="Regalos" />
-    <p class="font-rosario text-center mb-2">
+    <p class="font-asul text-center mb-2">
       Nuestro mayor regalo es tu presencia, pero si deseas obsequiarnos algo,
       puedes hacerlo a través de las siguientes opciones:
     </p>
@@ -285,19 +365,8 @@ const weddingDate = new Date(Date.UTC(2025, 3, 26, 21, 0, 0));
       }
     </div>
   </section>
-  <section class="bg-gray-light py-4">
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
-
-    <p
-      class="text-xl tracking-wider text-center font-rosario uppercase px-4 mx-12"
-    >
-      ¡Nos vemos pronto!
-    </p>
-
-    <div class="flex justify-center">
-      <hr class="my-4 border-lila border-t-2 w-12" />
-    </div>
+  <section>
+    <ImageCarousel images={imagesFooter} />
   </section>
+  <PlayButton audioSrc="/photograph.mp3" />
 </div>

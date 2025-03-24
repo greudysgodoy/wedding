@@ -1,0 +1,40 @@
+---
+// Archivo: PlayButton.astro
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  audioSrc: string;
+}
+
+const { audioSrc } = Astro.props;
+---
+<!-- Botón flotante en la esquina inferior derecha -->
+<button
+  id="playButton"
+  class="fixed bottom-4 right-4 z-50 bg-[#D5C4EA] text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+  aria-label="Play Song"
+>
+  <Icon name="music" size={32} class="text-lila-dark" />
+</button>
+
+<!-- Audio oculto -->
+<audio id="audioPlayer" src={audioSrc} preload="auto" style="display: none;"></audio>
+
+<script>
+  const playButton = document.getElementById('playButton');
+  const audioPlayer = document.getElementById('audioPlayer') as HTMLAudioElement;
+  
+  
+
+  if (playButton) {
+    playButton.addEventListener('click', () => {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        playButton.textContent = '⏸︎';
+      } else {
+        audioPlayer.pause();
+        playButton.textContent = '▶︎';
+      }
+    });
+  }
+</script>

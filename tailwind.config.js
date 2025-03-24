@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         lila: {
-          light: '#EDE4F8',
+          light: '#ECE4F6',
           DEFAULT: '#B497BD',
           dark: '#7A4C7C',
         },
