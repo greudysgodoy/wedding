@@ -233,5 +233,10 @@
     "name": "Flia Rodríguez",
     "slug": "rodriguez",
     "tickets": 3
+  },
+  {
+    "name": "'Ángel y Maga",
+    "slug": "angel-maga",
+    "tickets": 2
   }
 ]
