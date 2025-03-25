@@ -14,7 +14,13 @@ const { audioSrc } = Astro.props;
   class="fixed bottom-4 right-4 z-50 bg-[#D5C4EA] text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
   aria-label="Play Song"
 >
-  <Icon name="music" size={32} class="text-lila-dark" />
+  <!-- Icono de play y pause en elementos separados -->
+  <span id="iconPlay">
+    <Icon name="music" size={32} class="text-lila-dark" />
+  </span>
+  <span id="iconPause" class="hidden">
+    <Icon name="pause" size={32} class="text-lila-dark" />
+  </span>
 </button>
 
 <!-- Audio oculto -->
@@ -23,17 +29,19 @@ const { audioSrc } = Astro.props;
 <script>
   const playButton = document.getElementById('playButton');
   const audioPlayer = document.getElementById('audioPlayer') as HTMLAudioElement;
-  
-  
+  const iconPlay = document.getElementById('iconPlay');
+  const iconPause = document.getElementById('iconPause');
 
-  if (playButton) {
+  if (playButton && audioPlayer && iconPlay && iconPause) {
     playButton.addEventListener('click', () => {
       if (audioPlayer.paused) {
         audioPlayer.play();
-        playButton.textContent = '⏸︎';
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
       } else {
         audioPlayer.pause();
-        playButton.textContent = '▶︎';
+        iconPlay.classList.remove('hidden');
+        iconPause.classList.add('hidden');
       }
     });
   }
