@@ -11,5 +11,6 @@ export default defineConfig({
   image: {
     domains: ["astro.build"],
     remotePatterns: [{ protocol: "https" }],
-  }
+  },
+  site: import.meta.env.URL_SITE
 });
