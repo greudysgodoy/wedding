@@ -238,5 +238,10 @@
     "name": "Ángel y Maga",
     "slug": "angel-maga",
     "tickets": 2
+  },
+  {
+    "name": "Flia Briceño Sequera",
+    "slug": "briceno-sequera",
+    "tickets": 2
   }
 ]
