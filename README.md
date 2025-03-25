@@ -1,48 +1,59 @@
-# Astro Starter Kit: Basics
+# Wedding Invitations Website
 
-```sh
-npm create astro@latest -- --template basics
+Welcome to our wedding invitation website built with [Astro](https://astro.build/)! This repository contains the source code and assets for our unique, interactive wedding invitations.
+
+## Overview
+
+Our site is designed to showcase our wedding invitations and provide essential details for our special day. Built with Astro, the site offers an elegant, responsive, and interactive experience for all our guests.
+
+## Features
+
+- **Mobile Design**
+- **Interactive Elements**
+- **Customizable Content:** Easily update text, images, and styles.
+- **Optimized Performance:** Fast load times and smooth interactions thanks to Astro's modern architecture.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 20 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository:**  
+    Open your terminal and run:
+
+   ```bash
+   git clone https://github.com/greudysgodoy/wedding.git
+   ```
+
+2. **Navigate to the project directory:**
+   Change to the project folder with:
+    ```
+    cd wedding
+    ```
+3. **Install dependencies:**
+    Run the following command:
+    ```
+    npm install
+    ```
+    Or, if you prefer yarn:
+    ```
+    yarn install
+    ```
+### Running Locally
+
+Start the development server with:
+
+```
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Then, open your browser and visit http://localhost:4321 to view the website.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Thank you for visiting our wedding invitations project. We hope this site helps make our big day even more memorable!
