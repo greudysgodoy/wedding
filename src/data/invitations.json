@@ -248,5 +248,20 @@
     "name": "Romer Matheus",
     "slug": "romer-matheus",
     "tickets": 1
+  },
+  {
+    "name": "Lisvano Valera",
+    "slug": "lisvano-valera",
+    "tickets": 1
+  },
+  {
+    "name": "Edgar y Ramonita",
+    "slug": "edgar-ramonita",
+    "tickets": 2
+  },
+  {
+    "name": "Flia Mujica Guzmán",
+    "slug": "mujica-guzman",
+    "tickets": 4
   }
 ]
